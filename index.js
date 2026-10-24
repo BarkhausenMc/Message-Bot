@@ -16,6 +16,7 @@ const {
   TextInputStyle,
   ButtonStyle,
   TextDisplayComponent,
+  SectionBuilder,
   Sweepers
 } = require('discord.js');
 
@@ -31,6 +32,15 @@ const client = new Client({
 
 const admin = process.env.TRADER_ADMIN_ROLE_ID;
 const trader = process.env.TRADER_ROLE_ID;
+
+const clanTraders = [
+    {
+        discordId: '1300411222126100542',
+        mcName: 'PHOENIX318',
+        role: 'Trader Admin'
+    },
+    
+];
 
 const timestamp = new Date().toLocaleString('de-DE', {
   timeZone: 'Europe/Berlin',
@@ -253,6 +263,89 @@ client.on('interactionCreate', async (interaction) =>{
                 components: [partnerHugoGuardContainer],
                 flags: MessageFlags.IsComponentsV2
             });
+    }
+});
+
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isChatInputCommand()) return;
+
+    if (
+        interaction.commandName !== 'trader-list' ||
+        !interaction.inGuild() ||
+        !interaction.member.roles.cache.has(admin)
+    ) return;
+
+    try {
+        const Container = new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '# ⚔️ Clan Trader\n\n' +
+                    'Hier findest du unsere offiziellen Spawner-Trader auf **HugoSMP**.\n\n' +
+                    'Unsere Trader handeln mit Spawnern und sind hier mit ihrem Discord- und Minecraft-Namen aufgeführt.'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            );
+
+        for (const trader of clanTraders) {
+            let member;
+
+            try {
+                member = await interaction.guild.members.fetch(
+                    trader.discordId
+                );
+            } catch {
+                console.warn(
+                    `Trader ${trader.mcName} konnte nicht gefunden werden.`
+                );
+                continue;
+            }
+
+            Container.addSectionComponents(
+                new SectionBuilder()
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            `## ${trader.mcName}\n\n` +
+                            `**Discord:** ${member.displayName}\n` +
+                            `**Minecraft:** ${trader.mcName} \n` +
+                            `**Rolle:** ${trader.role}`
+                        )
+                    )
+                    .setThumbnailAccessory(
+                        new ThumbnailBuilder()
+                            .setURL(
+                                `https://mc-heads.net/avatar/${encodeURIComponent(trader.mcName)}/100`
+                            )
+                            .setDescription(
+                                `Minecraft-Kopf von ${trader.mcName}`
+                            )
+                        )
+            );
+
+            Container.addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            );
+        }
+
+        await interaction.channel.send({
+            components: [Container],
+            flags: MessageFlags.IsComponentsV2
+        });
+        
+    } catch (error) {
+        console.error('Fehler beim Senden der Trader-Liste:', error);
+
+        if (!interaction.replied && !interaction.deferred) {
+            await interaction.reply({
+                content: '❌ Die Trader-Liste konnte nicht gesendet werden.',
+                flags: MessageFlags.Ephemeral
+            });
+        }
     }
 });
 

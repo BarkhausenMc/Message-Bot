@@ -13,7 +13,10 @@ const commands = [
         .toJSON(),
     new SlashCommandBuilder()
         .setName('partner-hugoguard')
-        .setDescription('Schickt das Embed mit der Erklärung zur Zusammenarbeit mit HugoGuard in den Channel.')
+        .setDescription('Schickt das Embed mit der Erklärung zur Zusammenarbeit mit HugoGuard in den Channel.'),
+    new SlashCommandBuilder()
+        .setName('trader-list')
+        .setDescription('Schickt das Embed mit der Trader Liste in den Channel.')
 ];
 
 const rest = new REST({ version: '10' })
