@@ -212,13 +212,14 @@ client.on('interactionCreate', async (interaction) =>{
                         .setLabel('HugoGuard besuchen')
                         .setStyle(ButtonStyle.Link)
                         .setURL('https://hugoguard.net/')
-                        .setEmoji('🌐')
-                ),
-                new ButtonBuilder()
-                    .setLabel('Spawner-Handel ansehen')
-                    .setStyle(ButtonStyle.Link)
-                    .setURL('https://hugoguard.net/handel/spawners')
-                    .setEmoji('📦')
+                        .setEmoji('🌐'),
+
+                    new ButtonBuilder()
+                        .setLabel('Spawner-Handel ansehen')
+                        .setStyle(ButtonStyle.Link)
+                        .setURL('https://hugoguard.net/handel/spawners')
+                        .setEmoji('📦')
+                )
             );
                     
             await interaction.channel.send({
