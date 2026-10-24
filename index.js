@@ -310,8 +310,8 @@ client.on('interactionCreate', async (interaction) => {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '# 🪪 Interne Trader-Übersicht\n\n' +
-                    'Hier findest du eine Übersicht unserer **Trader**\n für den Spawner-Handel des **TRADE** Clan.\n\n' +
-                    'Die Liste dient der **internen Verwaltung und Zuordnung** unserer Trader\n anhand ihrer Discord- und Minecraft-Namen.'
+                    'Hier findest du eine Übersicht unserer **Trader**\nfür den Spawner-Handel des **TRADE** Clan.\n' +
+                    'Die Liste dient der **internen Verwaltung und Zuordnung**\nunserer Trader anhand ihrer Discord- und Minecraft-Namen.'
                 )
             )
             .addSeparatorComponents(
