@@ -47,6 +47,12 @@ const clanTraders = [
         role: 'Moderator'
     },
     {
+        discordId: '938086175250448465',
+        mcName: 'Mattis039',
+        mcUUID: '5b429070-3979-408d-a649-6a9b344af024',
+        role: 'Moderator'
+    },
+    {
         discordId: '1398020676086140978',
         mcName: '.Sinnesrausch/C_ghg_C',
         mcUUID: 'da1f5ea9-c309-49a5-9e3f-d054e17f3a50',
@@ -68,6 +74,12 @@ const clanTraders = [
         discordId: '380437818826031104',
         mcName: 'RedcookieYT',
         mcUUID: 'a6e5f2e7-e1e5-4284-a76e-391dfbf55753',
+        role: 'Trader'
+    },
+    {
+        discordId: '847100868616650762',
+        mcName: 'Icbk',
+        mcUUID: '9dc6d290-f942-448b-8e12-d92e0cb08228',
         role: 'Trader'
     },
 ];
