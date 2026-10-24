@@ -82,6 +82,12 @@ const clanTraders = [
         mcUUID: '9dc6d290-f942-448b-8e12-d92e0cb08228',
         role: 'Trader'
     },
+    {
+        discordId: '1072793446319915028',
+        mcName: 'Qwizel',
+        mcUUID: '2efabb07-913e-4df2-b10f-6d86d298aa31',
+        role: 'Trader'
+    },
 ];
 
 const timestamp = new Date().toLocaleString('de-DE', {
