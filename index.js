@@ -109,8 +109,9 @@ client.on('interactionCreate', async (interaction) =>{
     if (!interaction.isChatInputCommand()) return;
 
     if (
-        interaction.member.roles.has(admin) &&
-        interaction.commandName === 'rules'
+        interaction.commandName === 'rules' &&
+        interaction.inGuild() &&
+        interaction.member.roles.cache.has(admin)
     ) {
         const rulesContainer = new ContainerBuilder()
             .addTextDisplayComponents(
