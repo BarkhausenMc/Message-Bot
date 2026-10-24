@@ -39,7 +39,31 @@ const clanTraders = [
         mcName: 'PHOENIX318',
         role: 'Trader Admin'
     },
-    
+    {
+        discordId: '1301902544095674379',
+        mcName: 'lf4kh2',
+        role: 'Moderator'
+    },
+    {
+        discordId: '1398020676086140978',
+        mcName: '.Sinnesrausch',
+        role: 'Trader'
+    },
+    {
+        discordId: '1017849514515763210',
+        mcName: 'sweati_',
+        role: 'Trader'
+    },
+    {
+        discordId: '1330545011917586452',
+        mcName: 'j00nas0',
+        role: 'Trader'
+    },
+    {
+        discordId: '380437818826031104',
+        mcName: 'RedcookieYT',
+        role: 'Trader'
+    },
 ];
 
 const timestamp = new Date().toLocaleString('de-DE', {
@@ -279,9 +303,9 @@ client.on('interactionCreate', async (interaction) => {
         const Container = new ContainerBuilder()
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                    '# ⚔️ Clan Trader\n\n' +
-                    'Hier findest du unsere offiziellen Spawner-Trader auf **HugoSMP**.\n\n' +
-                    'Unsere Trader handeln mit Spawnern und sind hier mit ihrem Discord- und Minecraft-Namen aufgeführt.'
+                    '# 🪪 Interne Trader-Übersicht\n\n' +
+                    'Hier findest du eine Übersicht unserer **Trader**\n für den Spawner-Handel des **TRADE** Clan.\n\n' +
+                    'Die Liste dient der **internen Verwaltung und Zuordnung** unserer Trader\n anhand ihrer Discord- und Minecraft-Namen.'
                 )
             )
             .addSeparatorComponents(
@@ -336,7 +360,7 @@ client.on('interactionCreate', async (interaction) => {
             components: [Container],
             flags: MessageFlags.IsComponentsV2
         });
-        
+
     } catch (error) {
         console.error('Fehler beim Senden der Trader-Liste:', error);
 
