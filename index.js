@@ -409,7 +409,7 @@ client.on('interactionCreate', async (interaction) => {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '# 📜 Spawner Trading – Trader-Regeln\n' +
-                    'Willkommen im Spawner Trading! Bitte haltet euch an die folgenden Regeln, damit alle Trades fair und sicher ablaufen.\n'
+                    'Bitte haltet euch an die folgenden Regeln, damit alle Trades fair und sicher ablaufen.\n'
                 )
             )
             .addSeparatorComponents(
@@ -420,7 +420,7 @@ client.on('interactionCreate', async (interaction) => {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '## 🚫 1. Kein Scamming\n' +
-                    'Betrüge keine anderen Trader. Jeder Trade muss ehrlich und fair ablaufen. Scamming wird nicht toleriert.\n'
+                    'Betrüge keine anderen Spieler. Jeder Trade muss ehrlich und fair ablaufen. Scamming wird nicht toleriert und hart bestraft.\n'
                 )
             )
             .addSeparatorComponents(
@@ -431,7 +431,7 @@ client.on('interactionCreate', async (interaction) => {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '## 🤝 2. Niemals First geben\n' +
-                    'Gib niemals zuerst deine Spawner, Items oder dein Geld heraus, bevor du die vereinbarte Gegenleistung erhalten hast. Nutze bei Bedarf einen vertrauenswürdigen Middleman.\n'
+                    'Gib niemals zuerst deine Spawner oder dein Geld heraus, bevor du die vereinbarte Gegenleistung erhalten hast. Nutze bei Bedarf einen vertrauenswürdigen Middleman.\n'
                 )
             )
             .addSeparatorComponents(
@@ -442,7 +442,7 @@ client.on('interactionCreate', async (interaction) => {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '## 💬 3. Absprachen einhalten\n' +
-                    'Halte dich an vereinbarte Preise, Mengen und Bedingungen. Änderungen sind nur erlaubt, wenn beide Trader zustimmen.\n'
+                    'Halte dich an vereinbarte Preise, Mengen und Bedingungen. Änderungen sind nur erlaubt, wenn beide zustimmen.\n'
                 )
             )
             .addSeparatorComponents(
@@ -464,7 +464,7 @@ client.on('interactionCreate', async (interaction) => {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '## 🚫 5. Keine Fake-Angebote\n' +
-                    'Biete keine Spawner oder Items an, die du nicht besitzt oder gar nicht verkaufen möchtest. Halte deine Angebote realistisch und ehrlich.\n'
+                    'Biete keine Spawner, die du nicht besitzt oder gar nicht verkaufen möchtest/kannst. Halte deine Angebote realistisch und ehrlich.\n'
                 )
             )
             .addSeparatorComponents(
@@ -530,7 +530,7 @@ client.on('interactionCreate', async (interaction) => {
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '## ⚠️ Konsequenzen\n' +
-                    'Wer gegen diese Regeln verstößt, muss mit Konsequenzen bis hin zum Ausschluss vom Spawner Trading rechnen. Bei schweren Verstößen kann zusätzlich ein Server-Ban erfolgen.\n\n' +
+                    'Wer gegen diese Regeln verstößt, muss mit Konsequenzen bis hin zum Ausschluss vom Spawner Trading rechnen.\n\n' +
                     '**✅ Mit der Teilnahme am Spawner Trading akzeptierst du diese Regeln.**\n' +
                     '🤝 Handle fair, bleib ehrlich und schütze deine Items!'
                 )
