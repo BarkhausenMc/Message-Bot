@@ -330,69 +330,100 @@ client.on('interactionCreate', async (interaction) => {
     ) return;
 
     try {
-        const Container = new ContainerBuilder()
-            .addTextDisplayComponents(
-                new TextDisplayBuilder().setContent(
-                    '# 🪪 Interne Trader-Übersicht\n\n' +
-                    'Hier findest du eine Übersicht unserer **Trader**\nfür den Spawner-Handel des **TRADE** Clan.\n' +
-                    'Die Liste dient der **internen Verwaltung und Zuordnung**\nunserer Trader anhand ihrer Discord- und Minecraft-Namen.'
-                )
-            )
-            .addSeparatorComponents(
-                new SeparatorBuilder()
-                    .setDivider(true)
-                    .setSpacing(1)
-            );
+        const traders = [];
 
+        // Alle vorhandenen Discord-Mitglieder abrufen
         for (const trader of clanTraders) {
-            let member;
-
             try {
-                member = await interaction.guild.members.fetch(
+                const member = await interaction.guild.members.fetch(
                     trader.discordId
                 );
+
+                traders.push({
+                    ...trader,
+                    displayName: member.displayName
+                });
             } catch {
                 console.warn(
                     `Trader ${trader.mcName} konnte nicht gefunden werden.`
                 );
-                continue;
             }
-
-            Container.addSectionComponents(
-                new SectionBuilder()
-                    .addTextDisplayComponents(
-                        new TextDisplayBuilder().setContent(
-                            `## ${trader.mcName}\n\n` +
-                            `💬 **Discord:** ${member.displayName}\n` +
-                            `🎮 **Minecraft:** ${trader.mcName} \n` +
-                            `🎭 **Rolle:** ${trader.role}`
-                        )
-                    )
-                    .setThumbnailAccessory(
-                        new ThumbnailBuilder()
-                            .setURL(
-                                `https://mc-heads.net/avatar/${trader.mcUUID}/100.png`
-                            )
-                            .setDescription(
-                                `Minecraft-Kopf von ${trader.mcName}`
-                            )
-                        )
-            );
-
-            Container.addSeparatorComponents(
-                new SeparatorBuilder()
-                    .setDivider(true)
-                    .setSpacing(1)
-            );
         }
 
-        await interaction.channel.send({
-            components: [Container],
-            flags: MessageFlags.IsComponentsV2
-        });
+        // Maximal 5 Trader pro Nachricht
+        const tradersPerMessage = 5;
+
+        for (
+            let i = 0;
+            i < traders.length;
+            i += tradersPerMessage
+        ) {
+            const currentTraders = traders.slice(
+                i,
+                i + tradersPerMessage
+            );
+
+            const container = new ContainerBuilder();
+
+            // Header nur in der ersten Nachricht
+            if (i === 0) {
+                container
+                    .addTextDisplayComponents(
+                        new TextDisplayBuilder().setContent(
+                            '# 🪪 Interne Trader-Übersicht\n\n' +
+                            'Hier findest du eine Übersicht unserer **Trader** ' +
+                            'für den Spawner-Handel des **TRADE** Clan.\n\n' +
+                            'Die Liste dient der **internen Verwaltung und Zuordnung** ' +
+                            'unserer Trader anhand ihrer Discord- und Minecraft-Namen.'
+                        )
+                    )
+                    .addSeparatorComponents(
+                        new SeparatorBuilder()
+                            .setDivider(true)
+                            .setSpacing(1)
+                    );
+            }
+
+            for (const trader of currentTraders) {
+                container.addSectionComponents(
+                    new SectionBuilder()
+                        .addTextDisplayComponents(
+                            new TextDisplayBuilder().setContent(
+                                `## ${trader.mcName}\n\n` +
+                                `💬 **Discord:** ${trader.displayName}\n` +
+                                `🎮 **Minecraft:** ${trader.mcName}\n` +
+                                `🎭 **Rolle:** ${trader.role}`
+                            )
+                        )
+                        .setThumbnailAccessory(
+                            new ThumbnailBuilder()
+                                .setURL(
+                                    `https://mc-heads.net/avatar/${trader.mcUUID}/100.png`
+                                )
+                                .setDescription(
+                                    `Minecraft-Kopf von ${trader.mcName}`
+                                )
+                        )
+                );
+
+                container.addSeparatorComponents(
+                    new SeparatorBuilder()
+                        .setDivider(true)
+                        .setSpacing(1)
+                );
+            }
+
+            await interaction.channel.send({
+                components: [container],
+                flags: MessageFlags.IsComponentsV2
+            });
+        }
 
     } catch (error) {
-        console.error('Fehler beim Senden der Trader-Liste:', error);
+        console.error(
+            'Fehler beim Senden der Trader-Liste:',
+            error
+        );
 
         if (!interaction.replied && !interaction.deferred) {
             await interaction.reply({
