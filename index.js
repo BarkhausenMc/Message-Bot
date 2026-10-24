@@ -190,8 +190,8 @@ client.on('interactionCreate', async (interaction) =>{
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '# 🤝 Partner: HugoGuard\n\n' +
-                    'Wir freuen uns, unsere Partnerschaft mit [HugoGuard](https://hugoguard.net/) bekannt zu geben!\n\n' +
-                    'Durch die Zusammenarbeit verbinden wir unseren Service mit der API von HugoGuard, um den Handel mit Spawnern transparenter und sicherer zu gestalten.' 
+                    'Wir freuen uns, unsere **Partnerschaft mit [HugoGuard](https://hugoguard.net/)** bekannt zu geben!\n\n' +
+                    'Durch die Zusammenarbeit verbinden wir unseren Service mit der **API von HugoGuard**, um den Handel mit Spawnern **transparenter und sicherer** zu gestalten.'
                 )
             )
             .addSeparatorComponents(
@@ -202,7 +202,7 @@ client.on('interactionCreate', async (interaction) =>{
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '## 📦 Spawner-Preise\n\n' +
-                    'Wir übermitteln unsere aktuellen Spawner-Preise über die HugoGuard-API. Dadurch werden wir auf der [Spawner-Handelsseite](https://hugoguard.net/handel/spawners) als Großhändler angezeigt und unsere Preise können dort eingesehen werden.' 
+                    'Wir übermitteln unsere **aktuellen Spawner-Preise** über die **HugoGuard-API**. Dadurch werden wir auf der [**Spawner-Handelsseite**](https://hugoguard.net/handel/spawners) als **Großhändler** angezeigt und unsere Preise können dort eingesehen werden.'
                 )
             )
             .addSeparatorComponents(
@@ -213,7 +213,7 @@ client.on('interactionCreate', async (interaction) =>{
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '## 🛡️ Scam-Prüfung\n\n' +
-                    'Zusätzlich nutzen wir die API von HugoGuard, um Scammer zu überprüfen. Damit möchten wir das Handelsumfeld sicherer machen und unseren Nutzern mehr Sicherheit beim Handeln bieten.' 
+                    'Zusätzlich nutzen wir die **API von HugoGuard**, um **Scammer zu überprüfen**. Damit möchten wir das Handelsumfeld sicherer machen und unseren Nutzern **mehr Sicherheit beim Handeln** bieten.'
                 )
             )
             .addSeparatorComponents(
@@ -224,8 +224,8 @@ client.on('interactionCreate', async (interaction) =>{
             .addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
                     '## 🌐 Gemeinsam für sicheren Handel\n\n' +
-                    'Die Partnerschaft ermöglicht es uns, unsere Angebote besser sichtbar zu machen und gleichzeitig auf mehr Sicherheit und Transparenz beim Spawner-Handel zu setzen.\n\n' +
-                    'Vielen Dank an HugoGuard für die Zusammenarbeit!'
+                    'Die Partnerschaft ermöglicht es uns, unsere Angebote **besser sichtbar** zu machen und gleichzeitig auf **mehr Sicherheit und Transparenz** beim Spawner-Handel zu setzen.\n\n' +
+                    '🙏 Vielen Dank an **HugoGuard** für die Zusammenarbeit!'
                 )
             )
             .addSeparatorComponents(
