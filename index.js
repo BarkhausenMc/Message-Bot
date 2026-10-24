@@ -37,31 +37,37 @@ const clanTraders = [
     {
         discordId: '1300411222126100542',
         mcName: 'PHOENIX318',
+        mcUUID: '705069da-d48e-4576-9117-a4ca90810473',
         role: 'Trader Admin'
     },
     {
         discordId: '1301902544095674379',
         mcName: 'lf4kh2',
+        mcUUID: '31795359-6952-4ec5-b7ce-e5362329e500',
         role: 'Moderator'
     },
     {
         discordId: '1398020676086140978',
-        mcName: '.Sinnesrausch',
+        mcName: '.Sinnesrausch/C_ghg_C',
+        mcUUID: 'da1f5ea9-c309-49a5-9e3f-d054e17f3a50',
         role: 'Trader'
     },
     {
         discordId: '1017849514515763210',
         mcName: 'sweati_',
+        mcUUID: '0d483358-bbac-4cae-ae6e-97d01fcf5fd0',
         role: 'Trader'
     },
     {
         discordId: '1330545011917586452',
         mcName: 'j00nas0',
+        mcUUID: 'fb90e8ab-9add-41d0-bcbd-7344bd6d057a',
         role: 'Trader'
     },
     {
         discordId: '380437818826031104',
         mcName: 'RedcookieYT',
+        mcUUID: 'a6e5f2e7-e1e5-4284-a76e-391dfbf55753',
         role: 'Trader'
     },
 ];
@@ -333,15 +339,15 @@ client.on('interactionCreate', async (interaction) => {
                     .addTextDisplayComponents(
                         new TextDisplayBuilder().setContent(
                             `## ${trader.mcName}\n\n` +
-                            `**Discord:** ${member.displayName}\n` +
-                            `**Minecraft:** ${trader.mcName} \n` +
-                            `**Rolle:** ${trader.role}`
+                            `💬 **Discord:** ${member.displayName}\n` +
+                            `🎮 **Minecraft:** ${trader.mcName} \n` +
+                            `🎭 **Rolle:** ${trader.role}`
                         )
                     )
                     .setThumbnailAccessory(
                         new ThumbnailBuilder()
                             .setURL(
-                                `https://mc-heads.net/avatar/${encodeURIComponent(trader.mcName)}/100`
+                                `https://mc-heads.net/avatar/${trader.mcUUID}/100.png`
                             )
                             .setDescription(
                                 `Minecraft-Kopf von ${trader.mcName}`
