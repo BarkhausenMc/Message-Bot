@@ -11,6 +11,9 @@ const commands = [
         .setName('rules')
         .setDescription('Schickt das Embed mit den Server Regeln in den Channel.')
         .toJSON(),
+    new SlashCommandBuilder()
+        .setName('partner-hugoguard')
+        .setDescription('Schickt das Embed mit der Erklärung zur Zusammenarbeit mit HugoGuard in den Channel.')
 ];
 
 const rest = new REST({ version: '10' })
