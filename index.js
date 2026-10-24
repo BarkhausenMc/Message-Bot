@@ -397,4 +397,150 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isChatInputCommand()) return;
+
+    if (
+        interaction.commandName === 'trading-rules' &&
+        interaction.inGuild() &&
+        interaction.member.roles.cache.has(admin)
+    ) {
+        const tradingRulesContainer = new ContainerBuilder()
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '# 📜 Spawner Trading – Trader-Regeln\n' +
+                    'Willkommen im Spawner Trading! Bitte haltet euch an die folgenden Regeln, damit alle Trades fair und sicher ablaufen.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## 🚫 1. Kein Scamming\n' +
+                    'Betrüge keine anderen Trader. Jeder Trade muss ehrlich und fair ablaufen. Scamming wird nicht toleriert.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## 🤝 2. Niemals First geben\n' +
+                    'Gib niemals zuerst deine Spawner, Items oder dein Geld heraus, bevor du die vereinbarte Gegenleistung erhalten hast. Nutze bei Bedarf einen vertrauenswürdigen Middleman.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## 💬 3. Absprachen einhalten\n' +
+                    'Halte dich an vereinbarte Preise, Mengen und Bedingungen. Änderungen sind nur erlaubt, wenn beide Trader zustimmen.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## ⚖️ 4. Ehrlich handeln\n' +
+                    'Täusche niemanden über den Wert, die Anzahl oder die Eigenschaften deiner Spawner. Absichtliche Falschinformationen sind verboten.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## 🚫 5. Keine Fake-Angebote\n' +
+                    'Biete keine Spawner oder Items an, die du nicht besitzt oder gar nicht verkaufen möchtest. Halte deine Angebote realistisch und ehrlich.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## 🔒 6. Keine vereinbarten Trades abbrechen\n' +
+                    'Wenn beide Seiten einem Trade zugestimmt haben, muss die Vereinbarung eingehalten werden. Ausnahmen sind nur mit Zustimmung beider Seiten möglich.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## 📸 7. Beweise sichern\n' +
+                    'Macht bei größeren Trades Screenshots oder Videos. Diese können bei Problemen als Beweis dienen.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## 🤬 8. Respektvoll bleiben\n' +
+                    'Beleidigungen, Drohungen, Provokationen und unnötige Streitigkeiten haben im Trading nichts zu suchen.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## 🛡️ 9. Eigenverantwortung\n' +
+                    'Prüfe vor jedem Trade deinen Handelspartner, die vereinbarte Menge und die Gegenleistung. Handle vorsichtig und lass dich nicht unter Druck setzen.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## 📩 10. Probleme melden\n' +
+                    'Bei Scamming oder anderen Regelverstößen wende dich mit Beweisen an das zuständige Team. Versuche nicht, den Streit selbst eskalieren zu lassen.\n'
+                )
+            )
+            .addSeparatorComponents(
+                new SeparatorBuilder()
+                    .setDivider(true)
+                    .setSpacing(1)
+            )
+            .addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                    '## ⚠️ Konsequenzen\n' +
+                    'Wer gegen diese Regeln verstößt, muss mit Konsequenzen bis hin zum Ausschluss vom Spawner Trading rechnen. Bei schweren Verstößen kann zusätzlich ein Server-Ban erfolgen.\n\n' +
+                    '**✅ Mit der Teilnahme am Spawner Trading akzeptierst du diese Regeln.**\n' +
+                    '🤝 Handle fair, bleib ehrlich und schütze deine Items!'
+                )
+            );
+
+        await interaction.channel.send({
+            components: [tradingRulesContainer],
+            flags: MessageFlags.IsComponentsV2
+        });
+    }
+});
+
 client.login(process.env.DISCORD_BOT_TOKEN);

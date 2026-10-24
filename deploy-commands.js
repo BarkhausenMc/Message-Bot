@@ -16,7 +16,10 @@ const commands = [
         .setDescription('Schickt das Embed mit der Erklärung zur Zusammenarbeit mit HugoGuard in den Channel.'),
     new SlashCommandBuilder()
         .setName('trader-list')
-        .setDescription('Schickt das Embed mit der Trader Liste in den Channel.')
+        .setDescription('Schickt das Embed mit der Trader Liste in den Channel.'),
+    new SlashCommandBuilder()
+      .setName('trading-rules')
+      .setDescription('Schickt das Embed mit den Tradingg Regeln in den Channel.')
 ];
 
 const rest = new REST({ version: '10' })
